@@ -1,0 +1,85 @@
+$circle_offset: 2rem;
+$circle_dimensions: 21.875rem;
+$text_size: 4rem;
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  font-family: "Montserrat", HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+}
+
+.container {
+  background: url("../images/london.jpg");
+  background-size: cover;
+  transition: all 7.5s ease;
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
+
+.circle-left,
+.circle-right {
+  position: absolute;
+  top: $circle_offset;
+  height: $circle_dimensions;
+  width: $circle_dimensions;
+  border-radius: $circle_dimensions / 2;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+.circle-left {
+  left: $circle_offset;
+}
+
+.circle-right {
+  right: $circle_offset;
+}
+
+.london {
+
+}
+
+.description {
+  top: $circle_offset + ($circle_dimensions / 2) - $text_size;
+}
+
+.location {
+  top: $circle_offset + ($circle_dimensions / 2);
+}
+
+.description,
+.location,
+.price {
+  position: absolute;
+  visibility: hidden;
+  color: white;
+  font-size: $text_size;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.city {
+  font-weight: bold;
+}
+
+.price {
+  top: $circle_offset + ($circle_dimensions / 2) - ($text_size / 2);
+  right: $circle_offset + ($circle_dimensions / 2) - 4.25rem;
+}
