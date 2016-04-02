@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <title>Travel Agency</title>
 
-  <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat"> -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700">
   <link rel="stylesheet" href="css/main.min.css">
 </head>
 <body>
-  <div class="container grayscale">
-
+  <div id="slides">
     <!-- London -->
-    <section class="london">
-      <div class="circle-left"></div>
+    <div class="slide grayscale london">
+
+      <div class="circle"></div>
 
       <div class="description">
         See the world.
@@ -22,19 +22,37 @@
         Visit <span class="city">London</span>.
       </div>
 
-      <div class="price">
-        $899
+      <div class="rectangle">
+        <div class="price">$899</div>
       </div>
 
-      <div class="circle-right"></div>
-    </section>
+    </div>
+    <!-- End London -->
 
-    <!-- Paris (Slide up transition) -->
+    <!-- Paris -->
+    <div class="slide grayscale paris">
+
+      <div class="circle"></div>
+
+      <div class="location">
+        <span class="city">Paris</span>
+      </div>
+
+      <div class="description">
+        City of Love
+      </div>
+
+      <div class="rectangle">
+        <div class="price">$499</div>
+      </div>
+
+    </div>
+    <!-- End Paris -->
 
   </div>
 
   <script src="//code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenLite.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TimelineLite.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/plugins/CSSPlugin.min.js"></script>
   <script src="js/main.min.js"></script>

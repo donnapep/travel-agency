@@ -1,6 +1,8 @@
-$circle_offset: 2rem;
-$circle_dimensions: 21.875rem;
-$text_size: 4rem;
+$offset: 2vw;
+$circle_dimensions: 20vw;
+$rectangle_width: 25vw;
+$rectangle_height: 10vw;
+$text_size: 4vw;
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -11,75 +13,96 @@ html {
 }
 
 body {
-  margin: 0;
+  font-family: "Montserrat", HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
   position: relative;
   overflow: hidden;
-  font-family: "Montserrat", HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
 html,
-body,
-.container {
+body {
   height: 100%;
 }
 
-.container {
-  background: url("../images/london.jpg");
-  background-size: cover;
-  transition: all 7.5s ease;
-}
+/* Slides */
+#slides {
+  height: 100%;
 
-.grayscale {
-  filter: grayscale(100%);
-}
+  /* Slide */
+  .slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
 
-.circle-left,
-.circle-right {
-  position: absolute;
-  top: $circle_offset;
-  height: $circle_dimensions;
-  width: $circle_dimensions;
-  border-radius: $circle_dimensions / 2;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 1;
-}
+    &.grayscale {
+      filter: grayscale(100%);
+    }
 
-.circle-left {
-  left: $circle_offset;
-}
+    &.london {
+      background-image: url("../images/london.jpg");
+    }
 
-.circle-right {
-  right: $circle_offset;
-}
+    &.paris {
+      background-image: url("../images/paris.jpg");
+    }
 
-.london {
+    /* Shapes */
+    .circle,
+    .rectangle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: 1;
+    }
 
-}
+    .circle {
+      left: $offset;
+      top: $offset;
+      width: $circle_dimensions;
+      height: $circle_dimensions;
+      border-radius: $circle_dimensions / 2;
+    }
 
-.description {
-  top: $circle_offset + ($circle_dimensions / 2) - $text_size;
-}
+    .rectangle {
+      right: -$rectangle_width;
+      bottom: $offset;
+      width: $rectangle_width;
+      height: $rectangle_height;
+      border-radius: 8px;
+    }
 
-.location {
-  top: $circle_offset + ($circle_dimensions / 2);
-}
+    /* Text */
+    .description,
+    .location,
+    .price {
+      color: white;
+      font-size: $text_size;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 2px #000;
+    }
 
-.description,
-.location,
-.price {
-  position: absolute;
-  visibility: hidden;
-  color: white;
-  font-size: $text_size;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 2px #000;
-}
+    .description,
+    .location {
+      position: absolute;
+      visibility: hidden;
+    }
 
-.city {
-  font-weight: bold;
-}
+    .description {
+      top: $offset + ($circle_dimensions / 2) - $text_size;
+    }
 
-.price {
-  top: $circle_offset + ($circle_dimensions / 2) - ($text_size / 2);
-  right: $circle_offset + ($circle_dimensions / 2) - 4.25rem;
+    .location {
+      top: $offset + ($circle_dimensions / 2);
+    }
+
+    .price {
+      text-align: center;
+      line-height: $rectangle_height;
+    }
+
+    .city {
+      font-weight: 700;
+    }
+  }
 }

@@ -1,19 +1,21 @@
 $(function() {
-  var $london = $(".london"),
-    $description = $(".description"),
-    $location = $(".location"),
-    $price = $(".price"),
-    timeline = new TimelineLite({ "delay": 1 });
+  var timeline = new TimelineLite({ delay: 1 }),
+    $width = $(window).innerWidth() + "px",
+    $london = $(".london"),
+    $paris = $(".paris");
 
-  // Animation duration = 7.5 seconds
-  timeline.to($description, 3, { left: "3em", autoAlpha: 1 });
-  timeline.to($location, 3, { left: "3em", autoAlpha: 1 }, "-=1.5");
-  timeline.to($price, 2, { autoAlpha: 1 });
-  timeline.to($(".container"), 2, { top: "5em" });
+  // TODO: Grayscale won't work in IE.
+  timeline
+    .to($london.find(".description"), 3, { left: "12vw", autoAlpha: 1 })
+    .to($london.find(".location"), 3, { left: "12vw", autoAlpha: 1 }, "-=1.5")
+    .to($london, 3, { onUpdate: tweenGrayscale, onUpdateParams: ["{self}", 100, 0] }, "-=3")
+    .to($london.find(".rectangle"), 2, { right: "2vw" })
+    .from($paris, 2, { x: $width }, "+=7");
 
-  // Slide duration = 12 seconds. Transition slide up after 5 seconds.
+  function tweenGrayscale(timeline, start, end) {
+    var progress = Math.floor(timeline.progress() * 100),
+      value = start - progress;
 
-
-  // Gray to full colour.
-  $(".container").removeClass("grayscale");
+    TweenMax.set(timeline.target, {'-webkit-filter': 'grayscale(' + value + '%)', 'filter': 'grayscale(' + value + '%)'});
+  }
 });
