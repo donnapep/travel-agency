@@ -34,10 +34,15 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
+    z-index: 1;
     background-size: cover;
 
     &.grayscale {
       filter: grayscale(100%);
+    }
+
+    &.active {
+      z-index: 2;
     }
 
     &.london {
@@ -46,6 +51,10 @@ body {
 
     &.paris {
       background-image: url("../images/paris.jpg");
+    }
+
+    &.greece {
+      background-image: url("../images/greece.jpg");
     }
 
     /* Shapes */
@@ -74,7 +83,7 @@ body {
 
     /* Text */
     .description,
-    .location,
+    .sub-description,
     .price {
       color: white;
       font-size: $text_size;
@@ -83,7 +92,7 @@ body {
     }
 
     .description,
-    .location {
+    .sub-description {
       position: absolute;
       visibility: hidden;
     }
@@ -92,7 +101,7 @@ body {
       top: $offset + ($circle_dimensions / 2) - $text_size;
     }
 
-    .location {
+    .sub-description {
       top: $offset + ($circle_dimensions / 2);
     }
 
