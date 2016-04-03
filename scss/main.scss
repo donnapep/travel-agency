@@ -1,6 +1,9 @@
-$circle_offset: 2rem;
-$circle_dimensions: 21.875rem;
-$text_size: 4rem;
+$circle_offset: 2vw;
+$circle_dimensions: 20vw;
+$rectangle_offset: 4vw;
+$rectangle_width: 25vw;
+$rectangle_height: 10vw;
+$text_size: 4vw;
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -11,75 +14,143 @@ html {
 }
 
 body {
-  margin: 0;
+  font-family: "Montserrat", HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 400;
   position: relative;
   overflow: hidden;
-  font-family: "Montserrat", HelveticaNeue, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
 html,
-body,
-.container {
+body {
   height: 100%;
 }
 
-.container {
-  background: url("../images/london.jpg");
-  background-size: cover;
-  transition: all 7.5s ease;
-}
+/* Slides */
+#slides {
+  height: 100%;
 
-.grayscale {
-  filter: grayscale(100%);
-}
+  /* Slide */
+  .slide {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #464646;
 
-.circle-left,
-.circle-right {
-  position: absolute;
-  top: $circle_offset;
-  height: $circle_dimensions;
-  width: $circle_dimensions;
-  border-radius: $circle_dimensions / 2;
-  background-color: rgba(255, 255, 255, 0.5);
-  z-index: 1;
-}
+    &.grayscale {
+      filter: grayscale(100%);
+    }
 
-.circle-left {
-  left: $circle_offset;
-}
+    &.active {
+      z-index: 2;
+    }
 
-.circle-right {
-  right: $circle_offset;
-}
+    &.london {
+      background-image: url("../images/london-small.jpg");
 
-.london {
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/london-medium.jpg");
+      }
 
-}
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/london-large.jpg");
+      }
 
-.description {
-  top: $circle_offset + ($circle_dimensions / 2) - $text_size;
-}
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/london-x-large.jpg");
+      }
+    }
 
-.location {
-  top: $circle_offset + ($circle_dimensions / 2);
-}
+    &.paris {
+      background-image: url("../images/paris-small.jpg");
 
-.description,
-.location,
-.price {
-  position: absolute;
-  visibility: hidden;
-  color: white;
-  font-size: $text_size;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 2px #000;
-}
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/paris-medium.jpg");
+      }
 
-.city {
-  font-weight: bold;
-}
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/paris-large.jpg");
+      }
 
-.price {
-  top: $circle_offset + ($circle_dimensions / 2) - ($text_size / 2);
-  right: $circle_offset + ($circle_dimensions / 2) - 4.25rem;
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/paris-x-large.jpg");
+      }
+    }
+
+    &.greece {
+      background-image: url("../images/greece-small.jpg");
+
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/greece-medium.jpg");
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/greece-large.jpg");
+      }
+
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/greece-x-large.jpg");
+      }
+    }
+
+    /* Shapes */
+    .circle,
+    .rectangle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .circle {
+      left: $circle_offset;
+      top: $circle_offset;
+      width: $circle_dimensions;
+      height: $circle_dimensions;
+      border-radius: $circle_dimensions / 2;
+    }
+
+    .rectangle {
+      display: none;
+      bottom: $rectangle_offset;
+      width: $rectangle_width;
+      height: $rectangle_height;
+      border-radius: 8px;
+    }
+
+    /* Text */
+    .description,
+    .sub-description,
+    .price {
+      color: white;
+      font-size: $text_size;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 2px #000;
+    }
+
+    .description,
+    .sub-description {
+      position: absolute;
+      visibility: hidden;
+    }
+
+    .description {
+      top: $circle_offset + ($circle_dimensions / 2) - $text_size;
+    }
+
+    .sub-description {
+      top: $circle_offset + ($circle_dimensions / 2);
+    }
+
+    .price {
+      text-align: center;
+      line-height: $rectangle_height;
+    }
+
+    .city {
+      font-weight: 700;
+    }
+  }
 }
