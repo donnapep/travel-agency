@@ -43,7 +43,7 @@
       .pipe(jshint.reporter("jshint-stylish"))
       .pipe(jshint.reporter("fail"))
       .pipe(sourcemaps.init())
-      // .pipe(uglify())
+      .pipe(uglify())
       .pipe(sourcemaps.write())
       .pipe(rename({ suffix: ".min" }))
       .pipe(gulp.dest("dist/js"))

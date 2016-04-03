@@ -1,5 +1,6 @@
-$offset: 2vw;
+$circle_offset: 2vw;
 $circle_dimensions: 20vw;
+$rectangle_offset: 4vw;
 $rectangle_width: 25vw;
 $rectangle_height: 10vw;
 $text_size: 4vw;
@@ -36,6 +37,9 @@ body {
     width: 100%;
     z-index: 1;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #464646;
 
     &.grayscale {
       filter: grayscale(100%);
@@ -46,15 +50,51 @@ body {
     }
 
     &.london {
-      background-image: url("../images/london.jpg");
+      background-image: url("../images/london-small.jpg");
+
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/london-medium.jpg");
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/london-large.jpg");
+      }
+
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/london-x-large.jpg");
+      }
     }
 
     &.paris {
-      background-image: url("../images/paris.jpg");
+      background-image: url("../images/paris-small.jpg");
+
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/paris-medium.jpg");
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/paris-large.jpg");
+      }
+
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/paris-x-large.jpg");
+      }
     }
 
     &.greece {
-      background-image: url("../images/greece.jpg");
+      background-image: url("../images/greece-small.jpg");
+
+      @media screen and (min-width: 640px) {
+        background-image: url("../images/greece-medium.jpg");
+      }
+
+      @media screen and (min-width: 1280px) {
+        background-image: url("../images/greece-large.jpg");
+      }
+
+      @media screen and (min-width: 1920px) {
+        background-image: url("../images/greece-x-large.jpg");
+      }
     }
 
     /* Shapes */
@@ -62,20 +102,19 @@ body {
     .rectangle {
       position: absolute;
       background-color: rgba(255, 255, 255, 0.5);
-      z-index: 1;
     }
 
     .circle {
-      left: $offset;
-      top: $offset;
+      left: $circle_offset;
+      top: $circle_offset;
       width: $circle_dimensions;
       height: $circle_dimensions;
       border-radius: $circle_dimensions / 2;
     }
 
     .rectangle {
-      right: -$rectangle_width;
-      bottom: $offset;
+      display: none;
+      bottom: $rectangle_offset;
       width: $rectangle_width;
       height: $rectangle_height;
       border-radius: 8px;
@@ -98,11 +137,11 @@ body {
     }
 
     .description {
-      top: $offset + ($circle_dimensions / 2) - $text_size;
+      top: $circle_offset + ($circle_dimensions / 2) - $text_size;
     }
 
     .sub-description {
-      top: $offset + ($circle_dimensions / 2);
+      top: $circle_offset + ($circle_dimensions / 2);
     }
 
     .price {

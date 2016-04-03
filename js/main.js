@@ -1,4 +1,5 @@
 $(function() {
+  "use strict";
 
   /* Show the next slide of the slideshow. */
   function animate() {
@@ -12,7 +13,7 @@ $(function() {
       .to($activeSlide.find(".sub-description"), 3, { left: "12vw", autoAlpha: 1 }, "-=1.5")
       // TODO: Grayscale won't work in IE.
       .to($activeSlide, 3, { onUpdate: tweenGrayscale, onUpdateParams: ["{self}", 100, 0] }, "-=3")
-      .to($activeSlide.find(".rectangle"), 2, { right: "2vw" })
+      .to($activeSlide.find(".rectangle"), 2, { right: "4vw" })
       .fromTo($nextSlide, 2, { left: "100vw" }, { left: "0vw" }, "+=7");
   }
 
@@ -40,9 +41,18 @@ $(function() {
     var progress = Math.floor(timeline.progress() * 100),
       value = start - progress;
 
-    TweenMax.set(timeline.target, { "-webkit-filter": "grayscale(" + value + "%)", filter: "grayscale(" + value + "%)" });
+    TweenLite.set(timeline.target, { "-webkit-filter": "grayscale(" + value + "%)", filter: "grayscale(" + value + "%)" });
   }
 
-  animate();
+  function init() {
+    // Workaround for being unable to set the position of the rectangles in CSS as it breaks mobile.
+    $(".rectangle").each(function() {
+      $(this).css("right", -$(this).width()).show();
+    });
+
+    animate();
+  }
+
+  init();
 
 });
